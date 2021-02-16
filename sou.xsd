@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!-- Schemat opisu ucznia ver.1.00 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:complexType name="T_ADRES">
+    <xs:annotation>
+      <xs:documentation>Adres</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="ktg" type="xs:string" use="required"/>
+    <xs:attribute name="miejscowosc" type="xs:string" use="required"/>
+    <xs:attribute name="msc_m" type="xs:string" use="required"/>
+    <xs:attribute name="ulica" type="xs:string" use="required"/>
+    <xs:attribute name="nr_domu" type="xs:string" use="required"/>
+    <xs:attribute name="nr_lok" type="xs:string" use="required"/>
+    <xs:attribute name="kod" type="xs:string" use="required"/>
+    <xs:attribute name="poczta" type="xs:string" use="required"/>
+    <xs:attribute name="gmina" type="xs:string" use="required"/>
+    <xs:attribute name="powiat" type="xs:string" use="required"/>
+    <xs:attribute name="woj" type="xs:string" use="required"/>
+    <xs:attribute name="kraj" type="xs:string" use="required"/>
+    <xs:attribute name="tel" type="xs:string" use="required"/>
+    <xs:attribute name="e_mail" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="T_MIEJSCE">
+    <xs:annotation>
+      <xs:documentation>Oddział‚ ucznia</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="poziom" type="xs:byte" use="required"/>
+    <xs:attribute name="symbol" type="xs:string" use="required"/>
+    <xs:attribute name="rok_szk_o" type="xs:short" use="required"/>
+    <xs:attribute name="nr_dz" type="xs:byte" use="required"/>
+    <xs:attribute name="profil" type="xs:string" use="required"/>
+    <xs:attribute name="nr_ku" type="xs:int" use="required"/>
+    <xs:attribute name="status" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="uczeń"/>
+          <xs:enumeration value="absolwent"/>
+          <xs:enumeration value="przekazany"/>
+          <xs:enumeration value="skreślony"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ARKUSZ_OCEN">
+    <xs:annotation>
+      <xs:documentation>Arkusz ocen</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="OCENA" type="OCENA" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="rok_szk" type="xs:short" use="required"/>
+    <xs:attribute name="data_rady" type="xs:date" use="required"/>
+    <xs:attribute name="klasa" type="xs:byte" use="required"/>
+    <xs:attribute name="wskaznik_prom" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="+"/>
+          <xs:enumeration value="?"/>
+          <xs:enumeration value="!"/>
+          <xs:enumeration value="="/>
+          <xs:enumeration value="-"/>
+          <xs:enumeration value="z"/>
+          <xs:enumeration value="*"/>
+        </xs:restriction>
+        <!-- Wskażniki promocji:
+					+ promowany,
+					? promowany warunkowo
+					! promowany z wyróżnieniem,
+					= promowany z wydłużonym okresem nauki,
+					- niepromowany,
+					z zawieszony,
+					* niekompletny arkusz ocen -->
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="indyw_tok" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="tak"/>
+          <xs:enumeration value="nie"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="DANE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ZRODLO_DANYCH" type="ZRODLO_DANYCH"/>
+        <xs:element name="UCZEN" type="UCZEN" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="EGZAMIN_ZEWN">
+    <xs:annotation>
+      <xs:documentation>Informacje o egzaminach zewnętrznych</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="typ_egzaminu" type="xs:string" use="required"/>
+    <xs:attribute name="data" type="xs:date" use="required"/>
+    <xs:attribute name="wynik" type="xs:float" use="required"/>
+    <xs:attribute name="numer_zaswiad" type="xs:string" use="required"/>
+    <xs:attribute name="zwolniono" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="nie"/>
+          <xs:enumeration value="tak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OBWOD">
+    <xs:annotation>
+      <xs:documentation>Szkoła obwodowa</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ADRES_OB" type="T_ADRES" minOccurs="0"/>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="skrot" type="xs:string" use="required"/>
+    <xs:attribute name="typ" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="przedszkole"/>
+          <xs:enumeration value="podstawowa"/>
+          <xs:enumeration value="gimnazjum"/>
+          <xs:enumeration value="ponadgimnazjalna"/>
+          <xs:enumeration value="policealna"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="nazwa" type="xs:string" use="required"/>
+    <xs:attribute name="numer" type="xs:string" use="required"/>
+    <xs:attribute name="patron" type="xs:string" use="required"/>
+    <xs:attribute name="regon" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="id_osw" type="xs:string" use="required"/>
+    <xs:attribute name="ktg_uczniow" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="dzieci/młodzież"/>
+          <xs:enumeration value="dorośli"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="uprawnienia" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="publiczna"/>
+          <xs:enumeration value="niepubliczna z upr. publicznej"/>
+          <xs:enumeration value="niepubliczna bez upr. publicznej"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OCENA">
+    <xs:annotation>
+      <xs:documentation>Ocena z zajęcia</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="nazwa_zajec" type="xs:string" use="required"/>
+    <xs:attribute name="ktg_zaj" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="przedmiot ogólnokształcący"/>
+          <xs:enumeration value="przedmiot artystyczny"/>
+          <xs:enumeration value="religia/etyka"/>
+          <xs:enumeration value="zachowanie"/>
+          <xs:enumeration value="język obcy"/>
+          <xs:enumeration value="przedmiot zawodowy"/>
+          <xs:enumeration value="kształcenie specjalne"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="obowiazkowe" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="nie"/>
+          <xs:enumeration value="tak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="sposob_klas" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ocena ze skali"/>
+          <xs:enumeration value="ocena zachowania"/>
+          <xs:enumeration value="ocena opisowa"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="wartosc" type="xs:float" use="required"/>
+    <xs:attribute name="nazwa_oceny" type="xs:string" use="required"/>
+    <xs:attribute name="indyw_prog" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="nie"/>
+          <xs:enumeration value="tak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OPIEKUN">
+    <xs:annotation>
+      <xs:documentation>Opiekun ucznia</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ADRES_O" type="T_ADRES" minOccurs="0"/>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="imie" type="xs:string" use="required"/>
+    <xs:attribute name="nazwisko" type="xs:string" use="required"/>
+    <xs:attribute name="stopien_pokrew" type="xs:string" use="required"/>
+    <xs:attribute name="op_prawny" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="nie"/>
+          <xs:enumeration value="tak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="plec" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="męska"/>
+          <xs:enumeration value="żeńska"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="wykszt" type="xs:string" use="required"/>
+    <xs:attribute name="zawod" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="ORZECZENIE">
+    <xs:annotation>
+      <xs:documentation>Orzeczenie lekarskie</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="data" type="xs:date" use="required"/>
+    <xs:attribute name="rodzaj" type="xs:string" use="required"/>
+    <xs:attribute name="podstawa" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="OSIAGNIECIE">
+    <xs:annotation>
+      <xs:documentation>Osiągnięcia ucznia</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="data" type="xs:date" use="required"/>
+    <xs:attribute name="rodzaj" type="xs:string" use="required"/>
+    <xs:attribute name="opis" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="SRODOWISKO">
+    <xs:annotation>
+      <xs:documentation>Informacje środowiskowe ucznia</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="OPIEKUN" type="OPIEKUN" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="ktg_m_zam" type="xs:string" use="required"/>
+    <xs:attribute name="sierota" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="nie"/>
+          <xs:enumeration value="tak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rodzina_zastepcza" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="nie"/>
+          <xs:enumeration value="tak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="SZKOLA">
+    <xs:annotation>
+      <xs:documentation>Szkoła ucznia</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ADRES_S" type="T_ADRES" minOccurs="0"/>
+      <xs:element name="MIEJSCE" type="T_MIEJSCE" minOccurs="0"/>
+      <xs:element name="ARKUSZ_OCEN" type="ARKUSZ_OCEN" minOccurs="0"/>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="skrot" type="xs:string" use="required"/>
+    <xs:attribute name="typ" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="przedszkole"/>
+          <xs:enumeration value="podstawowa"/>
+          <xs:enumeration value="gimnazjum"/>
+          <xs:enumeration value="ponadgimnazjalna"/>
+          <xs:enumeration value="policealna"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="nazwa" type="xs:string" use="required"/>
+    <xs:attribute name="numer" type="xs:string" use="required"/>
+    <xs:attribute name="patron" type="xs:string" use="required"/>
+    <xs:attribute name="regon" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="id_osw" type="xs:string" use="required"/>
+    <xs:attribute name="ktg_uczniow" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="dzieci/młodzież"/>
+          <xs:enumeration value="dorośli"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="uprawnienia" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="publiczna"/>
+          <xs:enumeration value="niepubliczna z upr. publicznej"/>
+          <xs:enumeration value="niepubliczna bez upr. publicznej"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="SZKOLA_DO">
+    <xs:annotation>
+      <xs:documentation>Szkoła do której uczeń kandyduje</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ADRES_DO" type="T_ADRES" minOccurs="0"/>
+      <xs:element name="MIEJSCE_DO" type="T_MIEJSCE" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="skrot" type="xs:string" use="required"/>
+    <xs:attribute name="typ" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="przedszkole"/>
+          <xs:enumeration value="podstawowa"/>
+          <xs:enumeration value="gimnazjum"/>
+          <xs:enumeration value="ponadgimnazjalna"/>
+          <xs:enumeration value="policealna"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="nazwa" type="xs:string" use="required"/>
+    <xs:attribute name="numer" type="xs:string" use="required"/>
+    <xs:attribute name="patron" type="xs:string" use="required"/>
+    <xs:attribute name="regon" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="id_osw" type="xs:string" use="required"/>
+    <xs:attribute name="ktg_uczniow" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="dzieci/młodzież"/>
+          <xs:enumeration value="dorośli"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="uprawnienia" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="publiczna"/>
+          <xs:enumeration value="niepubliczna z upr. publicznej"/>
+          <xs:enumeration value="niepubliczna bez upr. publicznej"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DICTIONARY">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="ITEM" minOccurs="1"
+        type="ITEMTYPE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ITEMTYPE">
+    <xs:attribute name="key" type="xs:string" use="required"/>
+    <xs:attribute name="value" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="UCZEN">
+    <xs:annotation>
+      <xs:documentation>Informacje o uczniu</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ADRES_U" type="T_ADRES" minOccurs="0" maxOccurs="2"/>
+      <xs:element name="SRODOWISKO" type="SRODOWISKO" minOccurs="0"/>
+      <xs:element name="SZKOLA" type="SZKOLA" minOccurs="0"/>
+      <xs:element name="OBWOD" type="OBWOD" minOccurs="0"/>
+      <xs:element name="SZKOLA_DO" type="SZKOLA_DO" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="EGZAMIN_ZEWN" type="EGZAMIN_ZEWN" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="OSIAGNIECIE" type="OSIAGNIECIE" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ORZECZENIE" type="ORZECZENIE" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="nazwisko" type="xs:string" use="required"/>
+    <xs:attribute name="nazwisko_rodowe" type="xs:string" use="required"/>
+    <xs:attribute name="imie" type="xs:string" use="required"/>
+    <xs:attribute name="imie2" type="xs:string" use="required"/>
+    <xs:attribute name="plec" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="męska"/>
+          <xs:enumeration value="żeńska"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="data_ur" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:date">
+          <xs:pattern value="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|30|31)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="msc_ur" type="xs:string" use="required"/>
+    <xs:attribute name="msc_ur_m" type="xs:string" use="required"/>
+    <xs:attribute name="woj_ur" type="xs:string" use="required"/>
+    <xs:attribute name="kraj_ur" type="xs:string" use="required"/>
+    <xs:attribute name="pesel" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="id_osw" type="xs:string" use="required"/>
+    <xs:attribute name="ob_polskie" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="nie"/>
+          <xs:enumeration value="tak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="ob_ue" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="nie"/>
+          <xs:enumeration value="tak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ZRODLO_DANYCH">
+    <xs:annotation>
+      <xs:documentation>Informacje o źródle danych</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EXTENDEDPROPERTIES" type="DICTIONARY" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="ktg" type="xs:string" use="required"/>
+    <xs:attribute name="data" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:date">
+          <xs:pattern value="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|30|31)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="czas" type="xs:string" use="required"/>
+    <xs:attribute name="wersja_xsd" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:pattern value="1.00"/>
+          <xs:enumeration value="1.00"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
