@@ -30,6 +30,7 @@
 		gender="female"
 		national_id="99123047203"
 		birthdate="1999-12-30" 
+		barcode="90001999"
 		>
 		<address city="Cieszyn" street="Gołębia" number="3/1"
 				 post_code="37-450" country="Polska"
@@ -45,6 +46,7 @@
 		gender="female"
 		national_id="80123008804"
 		birthdate="1980-12-30"
+		barcode="90001980"
 		>
 		<type>Teacher</type>
 		<address city="Cieszyn" street="Gołębia" number="123/21"

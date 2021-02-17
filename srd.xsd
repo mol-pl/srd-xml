@@ -82,6 +82,7 @@
 		<xs:attribute name="gender"/>
 		<xs:attribute name="national_id"/>
 		<xs:attribute name="birthdate" type="xs:date"/>
+		<xs:attribute name="barcode"/>
 	</xs:attributeGroup>
 	
 	<xs:complexType name="elAddress">
