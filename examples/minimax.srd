@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <DATA
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="srd.xsd"
+	xsi:noNamespaceSchemaLocation="../srd.xsd"
 >
 	<SOURCE name="Example MJ" date="2021-02-16" time="11:12:34" srd_version="1.00"/>
 	
