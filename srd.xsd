@@ -17,7 +17,7 @@
 				<xs:element name="SOURCE" type="elSOURCE" minOccurs="0" maxOccurs="1"/>
 				<xs:choice minOccurs="1" maxOccurs="unbounded">
 					<xs:element name="STUDENT" type="elSTUDENT" />
-					<xs:element name="OTHER" type="elSTUDENT" />
+					<xs:element name="OTHER" type="elOTHER" />
 				</xs:choice>
 			</xs:sequence>
 		</xs:complexType>
@@ -39,9 +39,15 @@
 		<xs:sequence>
 			<xs:element name="address" type="elAddress" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="school" type="elSchool" minOccurs="0" maxOccurs="1"/>
-			<!--
 			<xs:element name="school_to" type="elSchoolTo" minOccurs="0" maxOccurs="unbounded"/>
-			-->
+		</xs:sequence>
+		<xs:attributeGroup ref="attrPersonalData"/>
+	</xs:complexType>
+	
+	<xs:complexType name="elOTHER">
+		<xs:sequence>
+			<xs:element name="type" type="elReaderType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="address" type="elAddress" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="attrPersonalData"/>
 	</xs:complexType>
@@ -64,6 +70,8 @@
 		<xs:attribute name="post_code"/>
 		<xs:attribute name="city"/>
 		<xs:attribute name="country"/>
+		<xs:attribute name="phone"/>
+		<xs:attribute name="email"/>
 	</xs:complexType>
 
 	<xs:complexType name="elSchool">
@@ -73,10 +81,31 @@
 		<xs:attribute name="school_id" type="xs:string" use="required"/>
 		<xs:attribute name="name"/>
 	</xs:complexType>
-	
+
+	<xs:complexType name="elSchoolTo">
+		<xs:sequence>
+			<xs:element name="place_to" type="elPlace"/>
+		</xs:sequence>
+		<xs:attribute name="school_id" type="xs:string" use="required"/>
+		<xs:attribute name="name"/>
+	</xs:complexType>
+
 	<xs:complexType name="elPlace">
 		<xs:attribute name="level" type="xs:string" use="required"/>
 		<xs:attribute name="symbol"/>
+	</xs:complexType>
+
+	<xs:complexType name="elReaderType" mixed="true">
+		<xs:annotation>
+			<xs:documentation>
+				Use English or Polish names here.
+
+				If ommited default type will be Other.
+
+				EN: Teacher, Other.
+				PL: Nauczyciel, Inne.
+			</xs:documentation>
+		</xs:annotation>
 	</xs:complexType>
 
 </xs:schema>
