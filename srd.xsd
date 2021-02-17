@@ -8,6 +8,16 @@
 			Base element is a STUDENT (also used for pupils).
 			You can optionally use OTHER to also import teachers and other stuff members.
 			You should also add SOURCE to provide meta-data of the source program.
+
+			Any reader MUST have a first and a last name.
+			Readers uniqueness is recognised with a combination: first name, last name, national ID.
+
+			National ID for Poland is the PESEL.
+			National ID for e.g. USA is the Social Security Number.
+			National ID can be skipped especially for countries that don't use it (e.g. UK).
+
+			Also note that `email` may be used both for identification
+			and for contacting readers (notifications).
 		</xs:documentation>
 	</xs:annotation>
 
@@ -36,6 +46,11 @@
 	</xs:complexType>
 	
 	<xs:complexType name="elSTUDENT">
+		<xs:annotation>
+			<xs:documentation>
+				Student (pupil) of a school.
+			</xs:documentation>
+		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="address" type="elAddress" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="school" type="elSchool" minOccurs="0" maxOccurs="1"/>
@@ -45,6 +60,13 @@
 	</xs:complexType>
 	
 	<xs:complexType name="elOTHER">
+		<xs:annotation>
+			<xs:documentation>
+				Stuff, parent etc.
+
+				Use type to specify if the reader is a teacher.
+			</xs:documentation>
+		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="type" type="elReaderType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="address" type="elAddress" minOccurs="0" maxOccurs="1"/>
@@ -53,10 +75,6 @@
 	</xs:complexType>
 	
 	<xs:attributeGroup name="attrPersonalData">
-		<xs:annotation>
-			<xs:documentation>
-			</xs:documentation>
-		</xs:annotation>
 		<xs:attribute name="last_name" type="xs:string" use="required"/>
 		<xs:attribute name="first_name" type="xs:string" use="required"/>
 		<xs:attribute name="gender"/>
@@ -65,6 +83,11 @@
 	</xs:attributeGroup>
 	
 	<xs:complexType name="elAddress">
+		<xs:annotation>
+			<xs:documentation>
+				Contact information.
+			</xs:documentation>
+		</xs:annotation>
 		<xs:attribute name="street"/>
 		<xs:attribute name="number"/>
 		<xs:attribute name="post_code"/>
@@ -75,6 +98,11 @@
 	</xs:complexType>
 
 	<xs:complexType name="elSchool">
+		<xs:annotation>
+			<xs:documentation>
+				School and place (grade) of a student.
+			</xs:documentation>
+		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="place" type="elPlace"/>
 		</xs:sequence>
@@ -83,6 +111,13 @@
 	</xs:complexType>
 
 	<xs:complexType name="elSchoolTo">
+		<xs:annotation>
+			<xs:documentation>
+				School to which a student want to be qualified.
+
+				Avoid using this type if possible.
+			</xs:documentation>
+		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="place_to" type="elPlace"/>
 		</xs:sequence>
@@ -91,7 +126,16 @@
 	</xs:complexType>
 
 	<xs:complexType name="elPlace">
-		<xs:attribute name="level" type="xs:string" use="required"/>
+		<xs:annotation>
+			<xs:documentation>
+				A place (grade / class) of a student.
+
+				Use a symbol like "A" for different classes on the same level (groups).
+				Level is a number of school years or age of children in the class.
+				So a place "1A" would be 1st graders in A group.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="level" type="xs:byte" use="required"/>
 		<xs:attribute name="symbol"/>
 	</xs:complexType>
 
@@ -101,6 +145,7 @@
 				Use English or Polish names here.
 
 				If ommited default type will be Other.
+				Note that teachers might have some extra loan limits etc.
 
 				EN: Teacher, Other.
 				PL: Nauczyciel, Inne.
