@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DATA
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="srd.xsd"
+>
+	<SOURCE name="Example MJ" date="2021-02-16" srd_version="1.00"/>
+	
+	<STUDENT last_name="Wiśniewska" first_name="Janina"
+		gender="female"
+		national_id="99123047203"
+		birthdate="1999-12-30" 
+		>
+		<address city="Cieszyn" street="Gołębia" number="3/1"
+		/>
+		<school school_id="SP2" name="Szkoła Podstawowa nr 2">
+			<place level="3" symbol="h" />
+		</school>
+	</STUDENT>
+
+</DATA>

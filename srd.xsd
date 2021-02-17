@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:annotation>
+		<xs:documentation>
+			School Readers Data schema.
+			Version 1.0.
+			
+			Base element is a STUDENT (also used for pupils).
+			You can optionally use OTHER to also import teachers and other stuff members.
+			You should also add SOURCE to provide meta-data of the source program.
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:element name="DATA">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SOURCE" type="elSOURCE" minOccurs="0" maxOccurs="1"/>
+				<xs:choice minOccurs="1" maxOccurs="unbounded">
+					<xs:element name="STUDENT" type="elSTUDENT" />
+					<xs:element name="OTHER" type="elSTUDENT" />
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="elSOURCE">
+		<xs:annotation>
+			<xs:documentation>
+				Source program or generator info.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name"/>
+		<xs:attribute name="date" type="xs:date"/>
+		<xs:attribute name="time"/>
+		<xs:attribute name="srd_version"/>
+	</xs:complexType>
+	
+	<xs:complexType name="elSTUDENT">
+		<xs:sequence>
+			<xs:element name="address" type="elAddress" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="school" type="elSchool" minOccurs="0" maxOccurs="1"/>
+			<!--
+			<xs:element name="school_to" type="elSchoolTo" minOccurs="0" maxOccurs="unbounded"/>
+			-->
+		</xs:sequence>
+		<xs:attributeGroup ref="attrPersonalData"/>
+	</xs:complexType>
+	
+	<xs:attributeGroup name="attrPersonalData">
+		<xs:annotation>
+			<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="last_name" type="xs:string" use="required"/>
+		<xs:attribute name="first_name" type="xs:string" use="required"/>
+		<xs:attribute name="gender"/>
+		<xs:attribute name="national_id"/>
+		<xs:attribute name="birthdate" type="xs:date"/>
+	</xs:attributeGroup>
+	
+	<xs:complexType name="elAddress">
+		<xs:attribute name="street"/>
+		<xs:attribute name="number"/>
+		<xs:attribute name="post_code"/>
+		<xs:attribute name="city"/>
+		<xs:attribute name="country"/>
+	</xs:complexType>
+
+	<xs:complexType name="elSchool">
+		<xs:sequence>
+			<xs:element name="place" type="elPlace"/>
+		</xs:sequence>
+		<xs:attribute name="school_id" type="xs:string" use="required"/>
+		<xs:attribute name="name"/>
+	</xs:complexType>
+	
+	<xs:complexType name="elPlace">
+		<xs:attribute name="level" type="xs:string" use="required"/>
+		<xs:attribute name="symbol"/>
+	</xs:complexType>
+
+</xs:schema>

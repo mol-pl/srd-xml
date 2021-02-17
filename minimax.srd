@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <DATA>
-	<SOURCE name="Example MJ" date="2021-02-16" time="11:12:34" version="1.00"/>
+	<SOURCE name="Example MJ" date="2021-02-16" time="11:12:34" srd_version="1.00"/>
 	
 	<!-- mini -->
 	<STUDENT last_name="Zaźółć-gęślą-jaźń" first_name="Test">
