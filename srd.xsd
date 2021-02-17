@@ -10,7 +10,10 @@
 			You should also add SOURCE to provide meta-data of the source program.
 
 			Any reader MUST have a first and a last name.
-			Readers uniqueness is recognised with a combination: first name, last name, national ID.
+			Readers uniqueness is recognised with a combination:
+			first name, last name, national ID.
+			For students school ID and class ID (grade) is also taken into account.
+
 
 			National ID for Poland is the PESEL.
 			National ID for e.g. USA is the Social Security Number.
