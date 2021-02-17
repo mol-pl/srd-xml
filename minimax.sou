@@ -3,14 +3,14 @@
 	<SOURCE name="Example MJ" date="2021-02-16" time="11:12:34" version="1.00"/>
 	
 	<!-- mini -->
-	<PUPIL last_name="Zaźółć-gęślą-jaźń" first_name="Test">
+	<STUDENT last_name="Zaźółć-gęślą-jaźń" first_name="Test">
 		<school school_id="SP1">
 			<place level="3" symbol="h" />
 		</school>
-	</PUPIL>
+	</STUDENT>
 	
 	<!-- standard -->
-	<PUPIL last_name="Hřebačkovy" first_name="Anže Test"
+	<STUDENT last_name="Hřebačkovy" first_name="Anže Test"
 		gender="male"
 		national_id="98123012345"
 		birthdate="1998-12-30" 
@@ -20,10 +20,10 @@
 		<school school_id="SP2" name="Szkoła Podstawowa nr 2">
 			<place level="3" symbol="h" />
 		</school>
-	</PUPIL>
+	</STUDENT>
 
 	<!-- max -->
-	<PUPIL last_name="Wiśniewska" first_name="Janina"
+	<STUDENT last_name="Wiśniewska" first_name="Janina"
 		gender="female"
 		national_id="99123047203"
 		birthdate="1999-12-30" 
@@ -35,7 +35,7 @@
 		<school_to school_id="SP2" name="Szkoła Podstawowa nr 2">
 			<place_to level="4" symbol="h" />
 		</school>
-	</PUPIL>
+	</STUDENT>
 
 	<!-- max -->
 	<OTHER last_name="Nauczycielska" first_name="Frania"
