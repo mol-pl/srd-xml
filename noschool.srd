@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DATA
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="srd.xsd"
+>
+	<SOURCE name="Example MJ" date="2021-02-16" time="11:12:34" srd_version="1.00"/>
+	
+	<!-- invalid - noschool -->
+	<STUDENT last_name="Noschool" first_name="Test">
+	</STUDENT>
+	
+	<!-- standard -->
+	<STUDENT last_name="Normal-School" first_name="Test">
+		<school school_id="SP2" name="Szkoła Podstawowa nr 2">
+			<place level="3" symbol="h" />
+		</school>
+	</STUDENT>
+
+	<!-- standard -->
+	<STUDENT last_name="Normal-School-Candidate" first_name="Test">
+		<school_to school_id="SP3">
+			<place_to level="12" />
+		</school_to>
+	</STUDENT>
+	
+</DATA>

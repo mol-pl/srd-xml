@@ -53,8 +53,10 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="address" type="elAddress" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="school" type="elSchool" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="school_to" type="elSchoolTo" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:choice>
+				<xs:element name="school" type="elSchool" maxOccurs="1"/>
+				<xs:element name="school_to" type="elSchoolTo" maxOccurs="unbounded"/>
+			</xs:choice>
 		</xs:sequence>
 		<xs:attributeGroup ref="attrPersonalData"/>
 	</xs:complexType>
