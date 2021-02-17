@@ -4,7 +4,7 @@ SRD stands for School Readers Data standard (schema).
 
 The `srd.xsd` contains definition of XSD to be used for basic validation of readers data.
 
-There are various tools (also online) that validate XML against XSD. One way is to use Netbeans IDE for that.
+There are various tools (also on-line) that validate XML against XSD. One way is to use Netbeans IDE for that.
 
 ## Netbeans validation
 
@@ -28,4 +28,4 @@ For XML/XSD validation you can use [Redhat XML extenstion](https://marketplace.v
 
 Once installed you just need schema location attributes added to a root element of your SRD file (same as for Netbeans).
 
-The extension works live (continously). All invalid attributes should be underlined. They should also be shown in *Problems* panel.
+The extension works live (continuously). All invalid attributes should be underlined. They should also be shown in *Problems* panel.
