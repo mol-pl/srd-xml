@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DATA
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../srd.xsd"
+>
+	<SOURCE name="Example MJ" date="2021-02-16" srd_version="1.00"/>
+	
+	<STUDENT last_name="Brown" first_name="Olivia"
+		gender="female"
+		birthdate="2015-12-30" 
+		>
+		<address city="London" number="123" street="Tottenham Court Road"
+		/>
+		<school school_id="RGP" name="Rose Garden Primary School">
+			<place level="5" />
+		</school>
+	</STUDENT>
+	
+	<STUDENT last_name="Smith" first_name="Olivier"
+		gender="male"
+		birthdate="2016-12-30" 
+		>
+		<address city="London" number="456" street="Primrose Street" post_code="E1 1AB"
+		/>
+		<school school_id="RGP" name="Rose Garden Primary School">
+			<place level="4" />
+		</school>
+	</STUDENT>
+	
+
+	<STUDENT last_name="Smith" first_name="John"
+		gender="male"
+		birthdate="2010-12-30" 
+		>
+		<address city="London" number="12" street="Queen Street, Croydon" post_code="E1 2AB"
+		/>
+		<school school_id="RGS" name="Rose Garden Secondary School">
+			<place level="3" symbol="elves" />
+		</school>
+	</STUDENT>
+
+</DATA>
