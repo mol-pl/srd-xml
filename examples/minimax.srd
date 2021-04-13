@@ -6,11 +6,13 @@
 	<SOURCE name="Example MJ" date="2021-02-16" time="11:12:34" srd_version="1.00"/>
 	
 	<!-- mini -->
-	<STUDENT last_name="Zaźółć-gęślą-jaźń" first_name="Test">
+	<STUDENT last_name="Brown" first_name="Test">
 		<school school_id="SP1">
-			<place level="3" symbol="h" />
+			<place level="7" />
 		</school>
 	</STUDENT>
+	
+	<OTHER last_name="Zaźółć-gęślą-jaźń" first_name="Pola"/>
 	
 	<!-- standard -->
 	<STUDENT last_name="Hřebačkovy" first_name="Anže Test"

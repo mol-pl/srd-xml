@@ -11,14 +11,14 @@
 	
 	<!-- standard -->
 	<STUDENT last_name="Normal-School" first_name="Test">
-		<school school_id="SP2" name="Szkoła Podstawowa nr 2">
+		<school school_id="PS2" name="Primary School no 2">
 			<place level="3" symbol="h" />
 		</school>
 	</STUDENT>
 
 	<!-- standard -->
 	<STUDENT last_name="Normal-School-Candidate" first_name="Test">
-		<school_to school_id="SP3">
+		<school_to school_id="PS3">
 			<place_to level="12" />
 		</school_to>
 	</STUDENT>
