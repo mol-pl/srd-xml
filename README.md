@@ -2,7 +2,7 @@
 
 ***SRD*** stands for ***School Readers Data*** standard (schema).
 
-The standard can be used is for data exchange between programs. In particular for importing school readers to library management systems like LibraNET or MOL NET+.
+The standard can be used for data exchange between programs. In particular for importing school readers to library management systems like LibraNET or MOL NET+.
 
 How to create an SRD file
 -------------------------
