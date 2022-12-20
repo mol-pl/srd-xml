@@ -3,27 +3,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../srd.xsd"
 >
-	<SOURCE name="Test MOL" date="2022-12-19" time="11:12:34" srd_version="1.00"/>
+	<SOURCE name="TestDupl MOL" date="2022-12-19" time="11:12:34" srd_version="1.00"/>
 	
 	<!--
 		A desitination software SHOULD detect duplicates here.
-		The software SHOULD report problems to users.
-		The software MUST NOT brake the database by importing invalid data.
+		The software SHOULD report problems to user(s) managing the system.
+		The software MUST NOT brake its own database by importing invalid data.
 	-->
 	
-	<OTHER last_name="OtherBar1" first_name="Test" barcode="9012345" />
-	<OTHER last_name="OtherBar2" first_name="Test" barcode="9012345" />
+	<OTHER last_name="OtherBar1" first_name="TestDupl" barcode="9012345" />
+	<OTHER last_name="OtherBar2" first_name="TestDupl" barcode="9012345" />
 	
-	<OTHER last_name="OtherEmail1" first_name="Test"><address email="test1@example.com" /></OTHER>
-	<OTHER last_name="OtherEmail2" first_name="Test"><address email="test1@example.com" /></OTHER>
+	<OTHER last_name="OtherEmail1" first_name="TestDupl"><address email="test1@example.com" /></OTHER>
+	<OTHER last_name="OtherEmail2" first_name="TestDupl"><address email="test1@example.com" /></OTHER>
 	
-	<OTHER last_name="OtherNames" first_name="Test" national_id="22243072019" birthdate="2022-04-30" />
-	<OTHER last_name="OtherNames" first_name="Test" national_id="22243072019" birthdate="2022-04-30" />
+	<OTHER last_name="OtherNames" first_name="TestDupl" national_id="22243072019" birthdate="2022-04-30" />
+	<OTHER last_name="OtherNames" first_name="TestDupl" national_id="22243072019" birthdate="2022-04-30" />
 
-	<OTHER last_name="OtherEmailNames" first_name="Test" national_id="22243072019MIX" birthdate="2022-04-30"><address email="test2MIX@example.com" /></OTHER>
-	<OTHER last_name="OtherEmailNames" first_name="Test" national_id="22243072019MIX" birthdate="2022-04-30"><address email="test2MIX@example.com" /></OTHER>
+	<OTHER last_name="OtherEmailNames" first_name="TestDupl" national_id="22243072019MIX" birthdate="2022-04-30"><address email="test2MIX@example.com" /></OTHER>
+	<OTHER last_name="OtherEmailNames" first_name="TestDupl" national_id="22243072019MIX" birthdate="2022-04-30"><address email="test2MIX@example.com" /></OTHER>
 
-	<OTHER last_name="OtherBarMail1" first_name="Test" barcode="90MIX12345"><address email="test3MIX@example.com" /></OTHER>
-	<OTHER last_name="OtherBarMail2" first_name="Test" barcode="90MIX12345"><address email="test3MIX@example.com" /></OTHER>
+	<OTHER last_name="OtherBarMail1" first_name="TestDupl" barcode="90MIX12345"><address email="test3MIX@example.com" /></OTHER>
+	<OTHER last_name="OtherBarMail2" first_name="TestDupl" barcode="90MIX12345"><address email="test3MIX@example.com" /></OTHER>
 
 </DATA>
