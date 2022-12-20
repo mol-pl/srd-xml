@@ -1,0 +1,8 @@
+No header. No elements.
+<!--
+	A desitination software SHOULD detect that the file is not an XML file.
+	The software SHOULD report problems to user(s) managing the system.
+-->
+
+JustMini1, TestNotXml
+JustMini2, TestNotXml

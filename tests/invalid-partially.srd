@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DATA
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../srd.xsd"
+>
+	<SOURCE name="TestInvPart MOL" date="2022-12-20" time="11:12:34" srd_version="1.00"/>
+	
+	<!--
+		A desitination software SHOULD detect invalid XML.
+		The software SHOULD report problems to user(s) managing the system.
+		The software MAY choose to ignore empty nodes.
+	-->
+
+	<OTHER/>
+
+	<OTHER last_name="UnknownAttributeNoName" unknown_attribute="abc" />
+
+	<OTHER last_name="UnknownAttributeMini" first_name="TestInvPart" unknown_attribute="abc" />
+
+	<OTHER last_name="JustMini" first_name="TestInvPart" />
+</DATA>

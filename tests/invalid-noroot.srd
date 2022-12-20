@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<SOURCE name="TestNoRoot MOL" date="2022-12-20" time="11:12:34" srd_version="1.00"/>
+
+<!--
+	A desitination software SHOULD detect invalid XML.
+	The software SHOULD report problems to user(s) managing the system.
+	The software MAY choose to ignore missing root if it is able to parse nodes without it.
+-->
+
+<OTHER last_name="JustMini1" first_name="TestNoRoot" />
+<OTHER last_name="JustMini2" first_name="TestNoRoot" />
